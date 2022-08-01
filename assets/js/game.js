@@ -99,7 +99,7 @@ var fight = function (enemy) {
   while (playerInfo.health > 0 && enemy.health > 0) {
     if (fightOrSkip()) {
       //if true, leave fight by breaking loop
-      break;fightOrSkip();
+      break;
     }
 
     // remove enemy's health by subtracting the amount set in the playerInfo.attack variable
@@ -207,26 +207,22 @@ var endGame = function () {
 var shop = function () {
   //ask player wat they would like to do
   var shopOptionPrompt = window.prompt(
-    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the story? Please enter one: 'REFILL' , 'UPGRADE', 'LEAVE' to make a choice"
+    "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
   );
+  shopOptionPrompt = parseInt(shopOptionPrompt);
   // carry out the action chosen
   switch (shopOptionPrompt) {
-    case "REFILL":
-    case "refill":
+    case 1:
       playerInfo.refillHealth();
       break;
-    case "UPGRADE":
-    case "upgrade":
+    case 2:
       playerInfo.upgradeAttack();
       break;
-
-    case "LEAVE":
-    case "leave":
-      window.alert("Leaving the store");
+    case 3:
+      window.alert("Leaving the store.");
       break;
     default:
-      window.alert("You did not pick a valid option. Try Again.");
-      //call shop again to force player to pick a vaild optionn
+      window.alert("You did not pick a valid option. Try again.");
       shop();
       break;
   }
